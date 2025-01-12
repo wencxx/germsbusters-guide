@@ -1,0 +1,74 @@
+{% extends './layout.html' %}
+
+{% block content %}
+    <div class="p-14 h-full w-full space-y-10">
+        <h1 class="font-bold text-2xl text-gray-500">Demonstration</h1>
+        <p class="text-lg text-gray-600">
+            This section is dedicated to presenting a comprehensive video showcase of the project’s functionality and features. This professionally crafted video highlights the system’s design, usability, and performance, providing a clear and engaging overview of its capabilities. By visually demonstrating how the system operates and solves real-world challenges, this section ensures stakeholders, evaluators, and viewers can easily understand and appreciate the project's value and impact.
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10 w-full">
+            <div class="h-full bg-white rounded-lg border p-3 flex flex-col gap-y-2">
+                <h1 class="font-bold text-xl tracking-wide">Admin Side</h1>
+                <p class="text-justify text-gray-500">
+                    This video will explain and demonstrate how to use the admin panel as an admin. This will also give an example of how to use the functionalities in the admin panel.
+                </p>
+                <button class="border-2 ml-auto rounded-full border-gray-500" onclick="playDemo('Admin.mp4')">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#6b7280"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/></svg>
+                </button>
+            </div>
+            <div class="h-full bg-white rounded-lg border p-3 flex flex-col gap-y-2">
+                <h1 class="font-bold text-xl tracking-wide">Employee Side</h1>
+                <p class="text-justify text-gray-500">
+                    This video will explain and demonstrate the employee part of the admin panel. This will also explain how the admin can accept the employees that will register.
+                </p>
+                <button class="border-2 ml-auto rounded-full border-gray-500" onclick="playDemo('Employee.mp4')">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#6b7280"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/></svg>
+                </button>
+            </div>
+            <div class="h-full bg-white rounded-lg border p-3 flex flex-col gap-y-2">
+                <h1 class="font-bold text-xl tracking-wide">Mobile App</h1>
+                <p class="text-justify text-gray-500">
+                    This is the last part of the demonstration. In this video, this will explain and demonstrate how to use and add a reservation from the mobile app itself. 
+                </p>
+                <button class="border-2 ml-auto rounded-full border-gray-500" onclick="playDemo('Mobile.mp4')">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#6b7280"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal -->
+    <div id="videoModal" class="w-screen h-screen fixed top-0 left-0 bg-black/30 hidden items-center justify-center">
+        <video id="demoVideo" class="w-2/4 h-3/4 rounded" controls autoplay>
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button class="absolute top-5 right-5 text-white bg-black/20 p-1 rounded-full px-2" onclick="closeModal()">
+            <span>X</span>
+        </button>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    const playDemo = (videoUrl) => {
+        const modal = document.getElementById('videoModal');
+        const video = document.getElementById('demoVideo');
+        const videoSource = video.querySelector('source');
+
+        videoSource.src = `{{ url_for('static', filename='videos/') }}${videoUrl}`;
+        video.load();
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    };
+
+    const closeModal = () => {
+        const modal = document.getElementById('videoModal');
+        const video = document.getElementById('demoVideo');
+        
+        video.pause();
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    };
+</script>
+{% endblock %}

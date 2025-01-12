@@ -1,0 +1,45 @@
+{% extends './layout.html' %}
+
+{% block content %}
+    <div class="p-14 h-full w-full space-y-10">
+        <h1 class="font-bold text-2xl text-gray-500">System</h1>
+        <p class="text-lg text-gray-600">
+            This section provides users with convenient access to essential resources related to the project. This section includes a direct link to the live system, allowing stakeholders to explore and experience its functionality firsthand. Additionally, it features a comprehensive user manual that guides users through the system's features and operations, ensuring a seamless experience. For developers and collaborators, the section also offers the ability to download the project's source code, enabling further exploration or customization. The System Section serves as a one-stop destination for accessing, understanding, and utilizing the capstone project effectively
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10 w-full">
+            <div class="h-full bg-white rounded-lg border p-3 flex flex-col gap-y-2">
+                <h1 class="font-bold text-xl tracking-wide">Capstone System</h1>
+                <p class="text-justify text-gray-500">
+                    Click the link below to be redirected to the Capstone System, where you can experience all the features and functionalities in detail. Explore everything it has to offer for a comprehensive experience!
+                </p>
+                <div class="ml-auto">
+                   <a href="https://germsbusters.vercel.app/" target="_blank" class="bg-green-500 text-white px-3 py-1 rounded">
+                        Visit Site
+                   </a>
+                </div>
+            </div>
+            <div class="h-full bg-white rounded-lg border p-3 flex flex-col gap-y-2">
+                <h1 class="font-bold text-xl tracking-wide">User Manual</h1>
+                <p class="text-justify text-gray-500">
+                    Click the link below to be redirected to the Capstone System, where you can experience all the features and functionalities in detail. Explore everything it has to offer for a comprehensive experience!
+                </p>
+                <div class="ml-auto">
+                   <a href="{{ url_for('static', filename='docs/manual.pdf') }}" target="_blank" class="bg-green-500 text-white px-3 py-1 rounded">
+                        View Manual
+                   </a>
+                </div>
+            </div>
+            <div class="h-full bg-white rounded-lg border p-3 flex flex-col gap-y-2">
+                <h1 class="font-bold text-xl tracking-wide">Source Code</h1>
+                <p class="text-justify text-gray-500">
+                    Click the link below to be redirected to the Capstone System, where you can experience all the features and functionalities in detail. Explore everything it has to offer for a comprehensive experience!
+                </p>
+                <div class="ml-auto">
+                   <a href="{{ url_for('static', filename='system/germsbusters.zip') }}" download class="bg-green-500 text-white px-3 py-1 rounded">
+                        Download
+                   </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}x 

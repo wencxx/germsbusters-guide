@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Germsbusters</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <main class="bg-gray-100 h-screen w-screen font-inter">
+        <header class="h-[8dvh] flex items-center justify-between px-14 bg-white border-b">
+            <h1 class="text-xl">Germsbusters</h1>
+        </header>
+        <div class="h-[92dvh] w-screen flex">
+            <nav class="bg-white w-28 pt-10">
+                <ul class="w-full space-y-5">
+                    <li class="w-full flex items-center justify-center py-2">
+                        <a href="{{ url_for('index') }}" class="flex flex-col items-center text-gray-400 font-medium {{ 'text-green-500' if request.path == url_for('index') else '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="{{ '#22c55e' if request.path == url_for('index') else '#9ca3af' }}"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="w-full flex items-center justify-center py-2">
+                        <a href="{{ url_for('documents') }}" class="flex flex-col items-center text-gray-400 font-medium {{ 'text-green-500' if request.path == url_for('documents') else '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="{{ '#22c55e' if request.path == url_for('documents') else '#9ca3af' }}"><path d="M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/></svg>
+                            <span>Documents</span>
+                        </a>
+                    </li>
+                    <li class="w-full flex items-center justify-center py-2">
+                        <a href="{{ url_for('system') }}" class="flex flex-col items-center text-gray-400 font-medium {{ 'text-green-500' if request.path == url_for('system') else '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="{{ '#22c55e' if request.path == url_for('system') else '#9ca3af' }}"><path d="M40-120v-80h880v80H40Zm120-120q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240H160Zm0-80h640v-440H160v440Zm0 0v-440 440Z"/></svg>
+                            <span>System</span>
+                        </a>
+                    </li>
+                    <li class="w-full flex items-center justify-center py-2">
+                        <a href="{{ url_for('demo') }}" class="flex flex-col items-center text-gray-400 font-medium {{ 'text-green-500' if request.path == url_for('demo') else '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="{{ '#22c55e' if request.path == url_for('demo') else '#9ca3af' }}"><path d="m380-300 280-180-280-180v360ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+                            <span>Demo</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+    {% block script %}
+    {% endblock %}
+</body>
+</html>
